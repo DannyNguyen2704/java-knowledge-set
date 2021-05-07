@@ -51,3 +51,12 @@ public void testFunctions(){
     System.out.println(nameLength);
 }
 ```
+Note: functions can be chained by "compose" and can be called independently using function.apply()
+```
+Function<Integer, String> intToString = Object::toString; // toString an integer
+Function<String, String> quote = s -> "'" + s + "'"; // append the string with quotes
+
+Function<Integer, String> quoteIntToString = quote.compose(intToString);
+assertEquals("'5'", quoteIntToString.apply(5)); // the chained function applies to number 5
+
+```
